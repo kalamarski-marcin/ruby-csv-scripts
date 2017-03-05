@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+fancy_echo() {
+    printf "\n%b\n" "$1"
+}
+
+fancy_echo "Original list.csv content: "
+
+cat list.csv
+
+fancy_echo "1. personal_list.rb loads and prints list.csv content"
+fancy_echo "1.1 without sorting"
+ruby -w person_list.rb
+fancy_echo "1.2 with sorting by name, lastname"
+ruby -w person_list.rb --sort-by-name-last_name
+fancy_echo "1.3 with sorting by lastname, name"
+ruby -w person_list.rb --sort-by-last_name-name
+fancy_echo "2. personal_list_merge.rb merges multiple files into one"
+fancy_echo ">> list_a.csv content"
+cat list_a.csv
+fancy_echo ">> list_b.csv content"
+cat list_b.csv
+ruby -w person_list_merge.rb list_a.csv list_b.csv
+fancy_echo ">> merged files outcome"
+cat list_c.csv
+fancy_echo "3. personal_list_uniq.rb prints uniq rows"
+ruby -w person_list_uniq.rb
+fancy_echo "4. personal_list_name.rb prints uniq lastnames"
+ruby -w person_list_name.rb
+fancy_echo "5. personal_list_stats.rb prints stats: name and lastname and theirs amount of occurence"
+ruby -w person_list_stats.rb
